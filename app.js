@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser';
 
 const app = express();
 
-// express inbuilt middlewares
+// express in-built middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -21,15 +21,15 @@ app.use("/api/v1/subscriptions", subscriptionRouter);
 
 
 // centralized error handling middleware
-app.use(errorMiddleware)
+app.use(errorMiddleware);
 
 app.get("/",(req,res) => {
     res.status(200).send("Welcome to Subscription Tracking API");
-})
+});
 
 app.listen(PORT,async () => {
     await connectToDatabase();
     console.log(`Subscription Tracking API is running at http://localhost:${PORT}`);
-})
+});
 
 export default app;
