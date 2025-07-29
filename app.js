@@ -3,6 +3,7 @@ import { PORT } from './config/env.js';
 import authRouter from './routes/auth.route.js';
 import userRouter from './routes/user.route.js';
 import subscriptionRouter from './routes/subscription.route.js';
+import connectToDatabase from './database/mongodb.js';
 
 const app = express();
 
@@ -16,8 +17,9 @@ app.get("/",(req,res) => {
     res.status(200).send("Welcome to Subscription Tracking API");
 })
 
-app.listen(PORT,() => {
-    console.log(`Subscription Tracking API is running at http://localhost:${PORT}`)
+app.listen(PORT,async () => {
+    await connectToDatabase();
+    console.log(`Subscription Tracking API is running at http://localhost:${PORT}`);
 })
 
 export default app;
