@@ -1,4 +1,4 @@
-import Subscription from "../models/subscription.model"
+import Subscription from "../models/subscription.model.js"
 
 export const createSubscription = async (req,res,next) => {
     try {
@@ -6,6 +6,7 @@ export const createSubscription = async (req,res,next) => {
             ...req.body,
             user: req.user._id,
         });
+        
         res.status(201).json({
             success: true,
             message: "Subscription Created",
