@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 // arject middleware to protect from sql attacks and bot 
-app.use(arcjetMiddleware);
+// app.use(arcjetMiddleware);
 
 // express routes
 app.use("/api/v1/auth", authRouter);
